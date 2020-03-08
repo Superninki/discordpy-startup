@@ -21,5 +21,15 @@ async def ping(ctx):
 async def neko(ctx):
     await ctx.send('にゃーん')
 
+    
+@client.event
+async def on_message(message):
+    if message.content == '/cleanup':
+        if message.author.guild_permissions.administrator:
+            await message.channel.purge()
+            await message.channel.send('ログを消去しました')
+        else:
+            await message.channel.send('管理人権限がありません')
+
 
 bot.run(token)
