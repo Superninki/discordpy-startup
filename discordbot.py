@@ -21,5 +21,11 @@ async def ping(ctx):
 async def neko(ctx):
     await ctx.send('にゃーん')
 
+@bot.command()
+@commands.has_permissions(administrator=True)
+async def cleanup(ctx):
+  await ctx.channel.purge()
+  await ctx.send('ログを全消去しました')
+    
     
 bot.run(token)
